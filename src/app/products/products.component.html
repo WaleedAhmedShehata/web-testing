@@ -1,0 +1,25 @@
+
+<div class="row">
+
+<div class="col-3">      <!--25% from the page left side -->
+
+  <product-filter [category]="category"></product-filter>
+ 
+</div>
+<div class="col">        <!-- 75% from the page right side -->
+
+<div class="row" *ngIf="cart$ | async as cart">
+       <ng-container *ngFor="let p of filteredProducts ;let i = index">
+          <div class="col">
+            <product-card [product]="p" [shopping-cart]="cart"></product-card>
+          </div>
+           
+              <div *ngIf="(i+1) % 2 === 0" class="w-100"></div> <!--condition after 2 products -->
+        </ng-container>
+
+       </div>
+
+     </div>
+</div>
+
+
